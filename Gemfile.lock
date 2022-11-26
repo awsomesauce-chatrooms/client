@@ -4,10 +4,12 @@ GEM
     curses (1.4.4)
 
 PLATFORMS
+  aarch64-linux-musl
   x86_64-linux
+  aarch64-linux
 
 DEPENDENCIES
   curses
 
 BUNDLED WITH
-   2.4.0.dev
+   2.3.7
