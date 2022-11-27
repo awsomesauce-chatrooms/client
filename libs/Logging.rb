@@ -1,6 +1,6 @@
 class Logging
   def initialize(domain)
-    @time = Time.now
+    @time = Time.now.strftime('%s%L')
     @domain = domain
 
     unless Dir.exist?("logs")
