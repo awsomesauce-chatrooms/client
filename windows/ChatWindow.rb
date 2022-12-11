@@ -22,7 +22,7 @@ class ChatWindow < Window
   def render()
     @text.each_with_index do |val, index|
       @curses.setpos(index+1, 2)
-      z = @w-4
+      z = @w-5
       y = val[0..z-1]
 
       size = (z-y.length)

@@ -27,11 +27,15 @@ class MemberWindow < Window
 
         @curses.attron(color) do
           x = @w-4
-          y = z[0..15]
-          @curses.addstr(y+(" "*(x-y.length)))
+          y = z[0..@w-3]
+
+          size = (x-y.length)
+          if size < 0; size = 0 end;
+
+          @curses.addstr(y+(" "*size))
         end
       else
-        @curses.addstr(" "*15)
+        @curses.addstr(" "*(@w-4))
       end
     end
   end
