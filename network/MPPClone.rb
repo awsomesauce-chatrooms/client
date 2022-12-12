@@ -13,6 +13,14 @@ class Network
       end
     end
 
+    if File.exist?("config/MPPClone.txt")
+      @token = File.read("config/MPPClone.txt")
+    else
+      puts "Create config/MPPClone.txt with your MPPClone config!"
+      exit!
+    end
+
+
     Thread.new do
       EM.run do
         $ws = WebSocket::EventMachine::Client.connect(:uri => 'wss://mppclone.com:8443')
@@ -20,7 +28,7 @@ class Network
         $ws.onopen do
           @app.chatwindow.add("connected")
 
-          $ws.send JSON.dump([{"m" => "hi", "token" => ""}])
+          $ws.send JSON.dump([{"m" => "hi", "token" => @token}])
           $ws.send JSON.dump([{"m" => "ch", "_id" => "✧𝓓𝓔𝓥 𝓡𝓸𝓸𝓶✧"}])
         end
 
